@@ -1,5 +1,6 @@
-import {Link} from 'react-router-dom'
-function RecipeCard({recipe, randDishImgId}) {
+import { Link } from 'react-router-dom'
+
+function RecipeCard({recipe, randDishImgId, handleDeleteRecipe}) {
   return(
     <div className="card">
       <img 
@@ -12,7 +13,9 @@ function RecipeCard({recipe, randDishImgId}) {
         <p className="card-text"> {recipe.name} made with {recipe.ingredients} makes for a great {recipe.classification}</p>
       </div>
       <div className="card-footer">
-        <button className="btn btn-sm btn-danger m-left">
+        <button className="btn btn-sm btn-danger m-left"
+          onClick={()=> handleDeleteRecipe(recipe._id)}
+        >
           Delete
         </button>
       </div>

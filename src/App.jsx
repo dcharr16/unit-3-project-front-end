@@ -36,6 +36,11 @@ const App = () => {
   const handleSignupOrLogin = () => {
     setUser(authService.getUser())
   }
+  const handleDeleteRecipe = id => {
+    recipeService.deleteOne(id)
+    .then (deletedRecipe =>
+    setRecipes(recipes.filter(recipe => recipe._id !== deletedRecipe._id)))
+  }
 
 
 
@@ -45,7 +50,7 @@ const App = () => {
       <main>
 
       <Routes>
-        <Route path='/' element={<RecipeList recipes={recipes}/>}/>
+        <Route path='/' element={<RecipeList handleDeleteRecipe={handleDeleteRecipe} recipes={recipes}/>}/>
         <Route path="/add" element={<AddRecipe handleAddRecipe={handleAddRecipe}/>}/>
         <Route path="/" element={<Landing user={user} />} />
         <Route
