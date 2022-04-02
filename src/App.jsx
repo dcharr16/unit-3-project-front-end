@@ -7,6 +7,7 @@ import Landing from './pages/Landing/Landing'
 import Profiles from './pages/Profiles/Profiles'
 import ChangePassword from './pages/ChangePassword/ChangePassword'
 import * as authService from './services/authService'
+import * as RecipeService from './services/recipes'
 import { AddRecipe } from './pages/AddRecipe/AddRecipe'
 
 const App = () => {
@@ -24,8 +25,9 @@ const App = () => {
     setUser(authService.getUser())
   }
 
-  const handleAddRecipe = newRecipeData => {
-    setRecipes([...recipes, newRecipeData])
+  const handleAddRecipe = async newRecipeData => {
+    const newRecipe = await RecipeService.create(newRecipeData)
+    setRecipes([...recipes, newRecipe])
   }
 
   return (

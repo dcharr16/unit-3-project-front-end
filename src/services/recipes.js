@@ -8,8 +8,9 @@ function create(recipe){
       'content-type': 'application/json',
       'Authorization': `Bearer ${tokenService.getToken()}`
     },
-    body: JSON.stringify( )
+    body: JSON.stringify(recipe)
   })
+  .then(res => res.json())
 }
 function getAll() {
   return fetch(BASE_URL, {
@@ -38,4 +39,8 @@ function update(recipe) {
     body: recipe
   })
   .then(res => res.json())
+}
+
+export{
+  create,
 }
