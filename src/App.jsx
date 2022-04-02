@@ -10,6 +10,7 @@ import * as authService from './services/authService'
 import { AddRecipe } from './pages/AddRecipe/AddRecipe'
 
 const App = () => {
+  const [recipes, setRecipes] = useState([])
   const [user, setUser] = useState(authService.getUser())
   const navigate = useNavigate()
 
@@ -23,13 +24,17 @@ const App = () => {
     setUser(authService.getUser())
   }
 
+  const handleAddRecipe = newRecipeData => {
+    setRecipes([...recipes, newRecipeData])
+  }
+
   return (
     <>
       <NavBar user={user} handleLogout={handleLogout} />
       <main>
 
       <Routes>
-        <Route path="/add" element={<AddRecipe/>}/>
+        <Route path="/add" element={<AddRecipe handleAddRecipe={handleAddRecipe}/>}/>
         <Route path="/" element={<Landing user={user} />} />
         <Route
           path="/signup"

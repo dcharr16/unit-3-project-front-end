@@ -19,10 +19,15 @@ function AddRecipe (props){
     setFormData({...formData, [evt.target.name]: evt.target.value})
     
   }
+  const handleSubmit = evt => {
+		evt.preventDefault()
+    props.handleAddRecipe(formData)
+	}
+
   return(
     <>
     <h1>Add Recipe</h1>
-    <form autoComplete="off" ref={formElement}>
+    <form autoComplete="off" ref={formElement} onSubmit={handleSubmit}>
       <div className="form-group mb-3">
             <label htmlFor="name-input" className="form-label">
               Puppy's Name (required)
