@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { Routes, Route, useNavigate, Navigate } from 'react-router-dom'
 import NavBar from './components/NavBar/NavBar'
 import Signup from './pages/Signup/Signup'
@@ -7,13 +7,25 @@ import Landing from './pages/Landing/Landing'
 import Profiles from './pages/Profiles/Profiles'
 import ChangePassword from './pages/ChangePassword/ChangePassword'
 import * as authService from './services/authService'
-import * as RecipeService from './services/recipes'
-import { AddRecipe } from './pages/AddRecipe/AddRecipe'
+import {AddRecipe} from './pages/AddRecipe/AddRecipe'
+import { RecipeList } from './pages/RecipeList/RecipeList'
+import * as recipeService from './services/recipes'
 
 const App = () => {
   const [recipes, setRecipes] = useState([])
   const [user, setUser] = useState(authService.getUser())
   const navigate = useNavigate()
+  
+  const handleAddRecipe = newRecipeData => {
+    recipeService.create(newRecipeData)
+    .then (newRecipe => setRecipes([...recipes, newRecipe]))
+    navigate ('/')
+  }
+
+  useEffect(()=>{
+    recipeService.getAll()
+    .then(allRecipes => setRecipes(allRecipes))   
+  },[])
 
   const handleLogout = () => {
     authService.logout()
@@ -25,10 +37,7 @@ const App = () => {
     setUser(authService.getUser())
   }
 
-  const handleAddRecipe = async newRecipeData => {
-    const newRecipe = await RecipeService.create(newRecipeData)
-    setRecipes([...recipes, newRecipe])
-  }
+
 
   return (
     <>
@@ -36,6 +45,7 @@ const App = () => {
       <main>
 
       <Routes>
+        <Route path='/' element={<RecipeList recipes={recipes}/>}/>
         <Route path="/add" element={<AddRecipe handleAddRecipe={handleAddRecipe}/>}/>
         <Route path="/" element={<Landing user={user} />} />
         <Route

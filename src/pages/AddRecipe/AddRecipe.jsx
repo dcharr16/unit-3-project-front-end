@@ -14,8 +14,7 @@ function AddRecipe (props){
     formElement.current.checkValidity() ? setValidForm(true) : setValidForm(false)
   }, [formData])
   
-  const handleChange = evt =>{
-    
+  const handleChange = evt =>{    
     setFormData({...formData, [evt.target.name]: evt.target.value})
     
   }
@@ -30,7 +29,7 @@ function AddRecipe (props){
     <form autoComplete="off" ref={formElement} onSubmit={handleSubmit}>
       <div className="form-group mb-3">
             <label htmlFor="name-input" className="form-label">
-              Puppy's Name (required)
+            Name of Dish (required)
             </label>
             <input 
               type="text"

@@ -43,4 +43,7 @@ function update(recipe) {
 
 export{
   create,
+  getAll,
+  update,
+  deleteOne,
 }
