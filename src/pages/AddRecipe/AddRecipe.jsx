@@ -1,20 +1,28 @@
-import { useState } from "react"
+import { useState, useRef, useEffect } from "react"
 
 function AddRecipe (props){
+  const formElement = useRef()
+  const [validForm, setValidForm] = useState(false)
   const [formData,setFormData] = useState({
     name: '',
     ingredients:'',
     classification:'',
     rating: 5,
   })
-  const handleChange = evt =>{
-    setFormData({...formData, [evt.target.name]: evt.target.value})
 
+  useEffect (() =>{
+    formElement.current.checkValidity() ? setValidForm(true) : setValidForm(false)
+  }, [formData])
+  
+  const handleChange = evt =>{
+    
+    setFormData({...formData, [evt.target.name]: evt.target.value})
+    
   }
   return(
     <>
     <h1>Add Recipe</h1>
-    <form>
+    <form autoComplete="off" ref={formElement}>
       <div className="form-group mb-3">
             <label htmlFor="name-input" className="form-label">
               Puppy's Name (required)
@@ -54,6 +62,7 @@ function AddRecipe (props){
               name="classification"
               value= {formData.classification}
               onChange ={handleChange}
+              required
               />
           </div>
           <div className="form-group mb-4">
@@ -73,6 +82,7 @@ function AddRecipe (props){
             <button
               type="submit"
               className="btn btn-primary btn-fluid"
+              disabled={!validForm}
               >
               Add Recipe
             </button>
