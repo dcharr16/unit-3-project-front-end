@@ -11,7 +11,8 @@ function RecipeList(props){
       {props.recipes.map(recipe => (
         <RecipeCard key={recipe._id} recipe= {recipe}
         randDishImgId = {dishIds[Math.floor(Math.random()*(dishIds.length))]}
-        handleDeleteRecipe={props.handleDeleteRecipe}        
+        handleDeleteRecipe={props.handleDeleteRecipe} 
+        user={props.user}       
         />
         // <div key={recipe._id}>
         //   <p>Dish Name: {recipe.name}</p>

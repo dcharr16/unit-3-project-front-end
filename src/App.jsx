@@ -26,7 +26,7 @@ const App = () => {
   useEffect(()=>{
     recipeService.getAll()
     .then(allRecipes => setRecipes(allRecipes))   
-  },[])
+  },[user])
 
   const handleLogout = () => {
     authService.logout()
@@ -74,7 +74,11 @@ const handleUpdateRecipe = updatedRecipeData => {
           path="/changePassword"
           element={user ? <ChangePassword handleSignupOrLogin={handleSignupOrLogin}/> : <Navigate to="/login" />}
           />
-        <Route path='/' element={<RecipeList handleDeleteRecipe={handleDeleteRecipe} recipes={recipes}/>}/>
+        <Route path='/' element={ 
+          user ? <RecipeList handleDeleteRecipe={handleDeleteRecipe} recipes={recipes} user={user}/>
+        :
+        <Navigate to='/login' />
+        }/>
         <Route path="/add" element={<AddRecipe handleAddRecipe={handleAddRecipe}/>}/>
         <Route path="/" element={<Landing user={user} />} />
         <Route path='/edit' element={<EditRecipe handleUpdateRecipe={handleUpdateRecipe}/>} />
