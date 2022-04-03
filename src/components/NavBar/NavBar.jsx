@@ -3,7 +3,8 @@ import { Link } from 'react-router-dom'
 const NavBar = ({ user, handleLogout }) => {
   return (
     <>
-      {user ?
+    {user ?
+          
         <nav>
           <ul>
             <li>Welcome, {user.name}</li>
