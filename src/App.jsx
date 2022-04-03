@@ -10,6 +10,7 @@ import * as authService from './services/authService'
 import {AddRecipe} from './pages/AddRecipe/AddRecipe'
 import { RecipeList } from './pages/RecipeList/RecipeList'
 import * as recipeService from './services/recipes'
+import { EditRecipe } from './pages/EditRecipe/EditRecipe'
 
 const App = () => {
   const [recipes, setRecipes] = useState([])
@@ -41,7 +42,14 @@ const App = () => {
     .then (deletedRecipe =>
     setRecipes(recipes.filter(recipe => recipe._id !== deletedRecipe._id)))
   }
-
+const handleUpdateRecipe = updatedRecipeData => {
+  recipeService.update(updatedRecipeData)
+  .then(updatedRecipe =>{
+    const newRecipesArray = recipes.map(recipe => recipe._id === updatedRecipeData._id ? updatedRecipeData : recipe)
+    setRecipes(newRecipesArray)
+    navigate('/')
+  })
+}
 
 
   return (
@@ -50,9 +58,6 @@ const App = () => {
       <main>
 
       <Routes>
-        <Route path='/' element={<RecipeList handleDeleteRecipe={handleDeleteRecipe} recipes={recipes}/>}/>
-        <Route path="/add" element={<AddRecipe handleAddRecipe={handleAddRecipe}/>}/>
-        <Route path="/" element={<Landing user={user} />} />
         <Route
           path="/signup"
           element={<Signup handleSignupOrLogin={handleSignupOrLogin} />}
@@ -69,7 +74,11 @@ const App = () => {
           path="/changePassword"
           element={user ? <ChangePassword handleSignupOrLogin={handleSignupOrLogin}/> : <Navigate to="/login" />}
           />
-
+        <Route path='/' element={<RecipeList handleDeleteRecipe={handleDeleteRecipe} recipes={recipes}/>}/>
+        <Route path="/add" element={<AddRecipe handleAddRecipe={handleAddRecipe}/>}/>
+        <Route path="/" element={<Landing user={user} />} />
+        <Route path='/edit' element={<EditRecipe handleUpdateRecipe={handleUpdateRecipe}/>} />
+        
       </Routes>
       </main>
     </>

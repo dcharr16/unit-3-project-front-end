@@ -30,13 +30,13 @@ function deleteOne(id) {
   .then(res => res.json())
 }
 function update(recipe) {
-  return fetch(`${BASE_URL}/${recipe.get('_id')}`, {
+  return fetch(`${BASE_URL}/${recipe._id}`, {
     method: 'PUT',
     headers: {
       'content-type': 'application/json',
       'Authorization': `Bearer ${tokenService.getToken()}`
     },
-    body: recipe
+    body: JSON.stringify(recipe)
   })
   .then(res => res.json())
 }

@@ -13,6 +13,8 @@ function RecipeCard({recipe, randDishImgId, handleDeleteRecipe}) {
         <p className="card-text"> {recipe.name} made with {recipe.ingredients} makes for a great {recipe.classification}</p>
       </div>
       <div className="card-footer">
+        <Link className='btn btn-sm btn-warning' to='/edit' state={{recipe}}>Edit
+        </Link>
         <button className="btn btn-sm btn-danger m-left"
           onClick={()=> handleDeleteRecipe(recipe._id)}
         >
