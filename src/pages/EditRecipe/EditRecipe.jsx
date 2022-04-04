@@ -54,15 +54,15 @@ function EditRecipe(props){
           />
         </div>
         <div className="form-group mb-3">
-          <label htmlFor="classification-input" className="form-label">
-            Classification (Required)
+          <label htmlFor="directions-input" className="form-label">
+            Directions (Required)
           </label>
           <input 
             type="text"
             className="form-control"
-            id="classification-input"
-            name="classification"
-            value={formData.classification}
+            id="directions-input"
+            name="directions"
+            value={formData.directions}
             onChange={handleChange}
             required
           />

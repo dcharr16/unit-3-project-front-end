@@ -10,7 +10,7 @@ function RecipeCard({recipe, randDishImgId, handleDeleteRecipe, user}) {
       />
       <div className="card-body">
         <h2 className="card-text">{recipe.name}</h2>
-        <p className="card-text"> {recipe.name} made with {recipe.ingredients} makes for a great {recipe.classification}</p>
+        <p className="card-text">Ingredients:{recipe.ingredients}<br/><br/> Directions: {recipe.directions}<br/> <br/>Rating: {recipe.rating}</p>
       </div>
       {
         user.profile === recipe.owner?._id ?
