@@ -1,0 +1,11 @@
+.container {
+  width: 90%;
+  display: grid;
+  grid-template-rows: repeat(minmax(170px, 1fr));
+	grid-template-columns: auto auto;
+  grid-gap: 20px;
+}
+.user{
+  border: 3px solid black
+
+}

@@ -1,27 +1,33 @@
 import { Link } from 'react-router-dom'
 
+
+
 const NavBar = ({ user, handleLogout }) => {
   return (
     <>
     {user ?
-          
+        <div className="li">          
         <nav>
-          <ul>
-            <li>Welcome, {user.name}</li>
-            <li><Link to='/'>Recipe List</Link></li>
-            <li><Link to="/add">Add Recipe</Link></li>
-            <li><Link to="/profiles">Profiles</Link></li>
-            <li><Link to="" onClick={handleLogout}>LOG OUT</Link></li>
-            <li><Link to="/changePassword">Change Password</Link></li>
-          </ul>
+          <div className='whole-nav-bar'>
+            {/* <li>Welcome, {user.name}</li> */}
+            <Link to='/'>Mikey's List</Link>
+            <Link to="/add">Add Recipe</Link>
+            <Link to="/profiles">Profiles</Link>
+            <Link to="/changePassword">Change Password</Link>
+            <Link to="" onClick={handleLogout}>LOG OUT</Link>
+          </div>
         </nav>
+        </div>
       :
+        <div>
+
         <nav>
           <ul>
-            <li><Link to="/login">Log In</Link></li>
-            <li><Link to="/signup">Create an Account</Link></li>
+            <Link to="/login">Log In</Link>
+            <Link to="/signup">Create an Account</Link>
           </ul>
         </nav>
+        </div>
       }
     </>
   )

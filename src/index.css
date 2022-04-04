@@ -15,19 +15,19 @@ code {
   --accent: #5DB7DE;
   --background: #F1E9DB;
   --secondary: #A39B8B;
-  --secondary-dark: #716A5C;
+  --secondary-dark: #70715c;
 }
 
 a {
-  color: var(--accent);
+  color: black;
   padding: 1vmin;
-  border-radius: 1vmin;
+  /* border-radius: 1vmin; */
   text-decoration: none !important;
 }
 
 a:hover {
-  color: var(--black);
-  background-color: var(--accent);
+  color: #ec161e;
+  background-color: #73c141;
 }
 
 a.active {
@@ -38,4 +38,31 @@ a.active {
 
 .m-left {
   margin-left: 10px;
+}
+.li{list-style-type: none;
+
+}
+div.whole-nav-bar{
+  background-color: white;
+}
+div.profiles-card{
+  width: 90%;
+  display: grid;
+  grid-template-rows: repeat(minmax(170px, 1fr));
+	grid-template-columns: auto auto;
+  grid-gap: 20px;
+  margin: 50px;
+  width: 400px;
+  padding: 20px;
+  box-sizing: border-box;
+  /* display: flex; */
+  align-items: center;
+  /* flex-direction: column; */
+  background: black;
+  background: -webkit-linear-gradient(bottom, rgba(0,0,0,1), rgba(0,0,0,.4));
+  color: white;
+  position: relative;
+  height: 250px;
+  border-radius: 20px;
+
 }

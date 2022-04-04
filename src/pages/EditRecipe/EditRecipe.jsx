@@ -1,5 +1,6 @@
 import { useState, useRef, useEffect } from "react"
 import { Link, useLocation } from 'react-router-dom'
+import styles from './EditRecipe.module.css'
 
 function EditRecipe(props){
   const location = useLocation ()
@@ -21,7 +22,7 @@ function EditRecipe(props){
   }
   
   return (
-    <>
+    <main className={styles.container}>
       <h1>Edit Recipe</h1>
       <form autoComplete="off" ref={formElement} onSubmit={handleSubmit}>
         <div className="form-group mb-3">
@@ -97,7 +98,7 @@ function EditRecipe(props){
           </Link>
         </div>
       </form>
-    </>
+    </main>
   )
 }
 

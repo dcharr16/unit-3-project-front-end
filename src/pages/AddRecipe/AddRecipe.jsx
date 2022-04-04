@@ -1,4 +1,5 @@
 import { useState, useRef, useEffect } from "react"
+import styles from './AddRecipe.module.css'
 
 function AddRecipe (props){
   const formElement = useRef()
@@ -23,8 +24,8 @@ function AddRecipe (props){
     props.handleAddRecipe(formData)
 	}
 
-  return(
-    <>
+  return(    
+    <main className={styles.container}>
     <h1>Add Recipe</h1>
     <form autoComplete="off" ref={formElement} onSubmit={handleSubmit}>
       <div className="form-group mb-3">
@@ -92,9 +93,8 @@ function AddRecipe (props){
             </button>
           </div>
     </form>
-		
-
-    </>
+    </main>
+    
   )
 }
 
