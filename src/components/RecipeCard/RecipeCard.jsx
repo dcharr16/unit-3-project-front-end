@@ -25,7 +25,7 @@ function RecipeCard({recipe, randDishImgId, handleDeleteRecipe, user}) {
         </div>
       :   
       <div className="card-body">
-      <p className="card-text">- {recipe.owner?.name}'s recipe</p>      
+        <p className="card-text">- {recipe.owner?.name}'s recipe</p>      
       </div> 
       } 
     </div>

@@ -7,26 +7,24 @@ const NavBar = ({ user, handleLogout }) => {
     <>
     {user ?
         <div className="li">          
-        <nav>
-          <div className='whole-nav-bar'>
-            {/* <li>Welcome, {user.name}</li> */}
+          <nav>
+          <div className='whole-nav-bar'>  
             <Link to='/'>Mikey's List</Link>
             <Link to="/add">Add Recipe</Link>
             <Link to="/profiles">Profiles</Link>
             <Link to="/changePassword">Change Password</Link>
             <Link to="" onClick={handleLogout}>LOG OUT</Link>
           </div>
-        </nav>
+          </nav>
         </div>
       :
         <div>
-
-        <nav>
-          <ul>
+          <nav>
+            <ul>
             <Link to="/login">Log In</Link>
             <Link to="/signup">Create an Account</Link>
-          </ul>
-        </nav>
+            </ul>
+          </nav>
         </div>
       }
     </>

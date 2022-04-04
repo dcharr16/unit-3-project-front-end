@@ -51,12 +51,10 @@ const handleUpdateRecipe = updatedRecipeData => {
   })
 }
 
-
   return (
     <>
       <NavBar user={user} handleLogout={handleLogout} />
       <main>
-
       <Routes>
         <Route
           path="/signup"
@@ -81,8 +79,7 @@ const handleUpdateRecipe = updatedRecipeData => {
         }/>
         <Route path="/add" element={<AddRecipe handleAddRecipe={handleAddRecipe}/>}/>
         <Route path="/" element={<Landing user={user} />} />
-        <Route path='/edit' element={<EditRecipe handleUpdateRecipe={handleUpdateRecipe}/>} />
-        
+        <Route path='/edit' element={<EditRecipe handleUpdateRecipe={handleUpdateRecipe}/>} />        
       </Routes>
       </main>
     </>
